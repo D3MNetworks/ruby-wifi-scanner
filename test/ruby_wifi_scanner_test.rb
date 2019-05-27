@@ -15,14 +15,9 @@ class RubyWifiScannerTest < Minitest::Test
     refute_nil ::RubyWifiScanner::VERSION
   end
 
-  def test_it_returns_a_result
-    # result = RubyWifiScanner.scan
-    # assert result.length > 0
-  end
-
   def test_scanner
-    # rws = RubyWifiScanner::Scanner.create
-    # assert rws.networks.first.level > rws.networks.last.level
+    rws = RubyWifiScanner::Scanner.create
+    assert rws.networks.first.level < rws.networks.last.level
   end
 
   def test_osx
@@ -37,7 +32,7 @@ class RubyWifiScannerTest < Minitest::Test
 
   def test_printing
     # rws = RubyWifiScanner::LinuxScanner.new @mock_linux_scan
-    rws = RubyWifiScanner::OSXScanner.new @mock_osx_scan
+    rws = RubyWifiScanner::LinuxScanner.new @mock_linux_scan
     puts rws.print_fmt
   end
 end
