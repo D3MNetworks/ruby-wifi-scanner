@@ -4,11 +4,14 @@ module RubyWifiScanner
     protected
 
     def parse
-      res = raw_scan.split "\n"
-      res[1..-1].map do |row|
-        m = row.strip.match(/(?<ssid>\w+) (?<rssi>[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}) (?<level>-?[\d]{1,4})/i)
-        WifiInfo.new(m[:ssid], m[:rssi], m[:level]) if m
+      split = raw_scan.split "\n"
+      resp = []
+      split[1..-1].each do |row|
+        break if row == ""
+        m = row.strip.match(/(?<ssid>\w+)? ?(?<rssi>[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}:[a-f0-9]{2}) (?<level>-?[\d]{1,4})/i)
+        resp << WifiInfo.new(m[:ssid], m[:rssi], m[:level]) if m
       end
+      resp.compact
     end
 
     def raw_scan
