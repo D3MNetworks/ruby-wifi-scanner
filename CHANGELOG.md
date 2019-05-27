@@ -3,7 +3,8 @@
 
 ### Bug Fixes
 
-* Fixed a bug where an unnamed SSID for OS X would cause an error ([7a42b41](https://github.com/D3MNetworks/ruby-wifi-scanner/commit/7a42b41))
+* Fixed a bug where an unnamed SSID for OS X would cause an error ([b0e38a1](https://github.com/D3MNetworks/ruby-wifi-scanner/commit/b0e38a1))
+* Linux actually works now ([bb21dfb](https://github.com/D3MNetworks/ruby-wifi-scanner/commit/bb21dfb))
 
 
 ### Features
