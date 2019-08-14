@@ -2,7 +2,7 @@ module RubyWifiScanner
   class Scanner
     attr_reader :networks
 
-    WifiInfo = Struct.new(:ssid, :rssi, :level)
+    WifiInfo = Struct.new(:ssid, :rssi, :level, :channel)
 
     def self.create(raw_scan=nil)
       case
@@ -29,7 +29,7 @@ module RubyWifiScanner
 
     def print_fmt
       @networks.map do |n|
-        "#{n.rssi}\t#{n.level}\t#{n.ssid}"
+        "#{n.rssi}\t#{n.level}\t#{n.channel}\t#{n.ssid}"
       end
     end
 
