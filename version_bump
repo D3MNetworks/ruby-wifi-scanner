@@ -1,3 +1,4 @@
 #!/bin/bash
 
-/usr/local/bin/conventional-changelog -p angular -i CHANGELOG.md -s
+# /usr/local/bin/conventional-changelog -p angular -i CHANGELOG.md -s
+conventional-changelog -p angular -i CHANGELOG.md -s
