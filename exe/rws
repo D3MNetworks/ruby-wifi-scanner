@@ -2,6 +2,27 @@
 
 require "bundler/setup"
 require "ruby_wifi_scanner"
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: example.rb [options]"
+
+  opts.on("-d", "--deep", "Run a longer deep scan") do |v|
+    options[:deep] = v
+  end
+
+  opts.on("-f", "--freq=FREQ", "Choose 2 or 5") do |v|
+    options[:freq] = v
+  end
+end.parse!
+
 
 scanner = RubyWifiScanner::Scanner.create
-puts scanner.print_fmt
+
+if options[:deep]
+  scanner.deep_scan
+end
+
+
+puts scanner.print_fmt(options)

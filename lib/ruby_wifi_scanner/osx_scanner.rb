@@ -19,6 +19,15 @@ module RubyWifiScanner
         %x{/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --scan}
     end
 
+    def directed_scan ssid
+      user = `whoami`.chomp
+      if user == 'root'
+        %x{/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -z --scan='#{ssid}'}
+      else
+        raise 'Deep scan must be ran as root'
+      end
+    end
+
   end
 end
 
